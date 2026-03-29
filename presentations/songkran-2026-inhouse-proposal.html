@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Songkran 2026 - In-House DJ Proposal - Bright Ears</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cyan: #00bbe4;
+      --teal: #2f6364;
+      --lavender: #d59ec9;
+      --gold: #e8b84b;
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray: #333333;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    @page { size: 1280px 720px; margin: 0; }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a2e 50%, var(--teal) 100%);
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(0,187,228,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    /* Page 1: Program Overview */
+    .page-program {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .logo { width: 90px; }
+
+    .title-block { text-align: center; flex: 1; }
+
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--cyan);
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .venues {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 6px;
+    }
+
+    .option-badge {
+      display: inline-block;
+      background: rgba(213,158,201,0.15);
+      border: 1px solid rgba(213,158,201,0.4);
+      color: var(--lavender);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+
+    .program-description {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 20px;
+      text-align: center;
+    }
+
+    /* Schedule Section */
+    .schedule-section {
+      display: flex;
+      gap: 30px;
+      flex: 1;
+    }
+
+    .schedule-main { flex: 1.4; }
+    .schedule-aside { flex: 1; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(0,187,228,0.3);
+    }
+
+    /* Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .timeline-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .timeline-time {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      width: 100px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .timeline-bar {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .bar-dj {
+      background: rgba(213,158,201,0.12);
+      border-left: 3px solid var(--lavender);
+      color: var(--lavender);
+    }
+
+    .bar-perc {
+      background: rgba(232,184,75,0.12);
+      border-left: 3px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .bar-resident {
+      background: rgba(255,255,255,0.05);
+      border-left: 3px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.7);
+    }
+
+    .bar-hotel {
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.4);
+      font-style: italic;
+    }
+
+    .bar-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 2px;
+    }
+
+    /* Date chips */
+    .date-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .date-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .date-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 8px 12px;
+      min-width: 60px;
+    }
+
+    .date-chip.active {
+      border-color: rgba(213,158,201,0.4);
+      background: rgba(213,158,201,0.08);
+    }
+
+    .date-chip.short {
+      border-color: rgba(232,184,75,0.4);
+      background: rgba(232,184,75,0.08);
+    }
+
+    .date-num {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .date-day {
+      font-size: 9px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .date-note {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      margin-left: 8px;
+    }
+
+    /* Notes */
+    .notes-list {
+      list-style: none;
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+    }
+
+    .notes-list li::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background: var(--lavender);
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    /* Page 2: Pricing */
+    .page-pricing {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .pricing-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--cyan);
+    }
+
+    .logo-small { width: 50px; opacity: 0.8; }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    .pricing-table th {
+      background: rgba(0,187,228,0.12);
+      color: var(--cyan);
+      font-weight: 600;
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid rgba(0,187,228,0.3);
+    }
+
+    .pricing-table th:nth-child(n+3) { text-align: right; }
+
+    .pricing-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 13px;
+    }
+
+    .pricing-table td:nth-child(n+3) { text-align: right; font-variant-numeric: tabular-nums; }
+
+    .pricing-table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+    .pricing-table .row-desc { color: rgba(255,255,255,0.9); }
+    .pricing-table .row-sub { font-size: 10px; color: rgba(255,255,255,0.4); }
+
+    .totals-section {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 30px;
+    }
+
+    .totals-box {
+      width: 350px;
+      background: rgba(0,187,228,0.06);
+      border: 1px solid rgba(0,187,228,0.2);
+      border-radius: 8px;
+      padding: 16px 20px;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .total-row.grand {
+      border-top: 1px solid rgba(0,187,228,0.3);
+      margin-top: 4px;
+      padding-top: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+    }
+
+    .pricing-notes { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; }
+
+    .pricing-notes-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .pricing-notes-list {
+      list-style: none;
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+    }
+
+    .pricing-notes-list li::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 25px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    @media print {
+      .slide {
+        page-break-after: always;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Page 1: Program Overview -->
+<div class="slide">
+  <div class="page-program">
+    <div class="header">
+      <img src="../branding/BE_Logo_Transparent.png" alt="Bright Ears" class="logo">
+      <div class="title-block">
+        <h1 class="title">Songkran Festival</h1>
+        <p class="subtitle">DJ Program 2026</p>
+        <p class="venues">CRU Champagne Bar &bull; 59th Floor &bull; Centara Grand at Central World</p>
+        <div class="option-badge">Option B &mdash; In-House DJ</div>
+      </div>
+      <div style="width: 90px;"></div>
+    </div>
+
+    <p class="program-description">
+      Elevate CRU's Songkran celebrations with an extended evening program featuring a Bright Ears
+      resident DJ and live percussion. Two performers create an energetic festival atmosphere from 17:00
+      each evening, with your regular resident DJ continuing the night from 21:00.
+    </p>
+
+    <div class="schedule-section">
+      <!-- Left: Daily Timeline -->
+      <div class="schedule-main">
+        <div class="section-label">Daily Program &mdash; April 11, 13, 14, 15</div>
+        <div class="timeline">
+          <div class="timeline-row">
+            <div class="timeline-time">17:00 - 21:00</div>
+            <div class="timeline-bar bar-dj">
+              Set 1: Bright Ears DJ
+              <div class="bar-label">Commercial &bull; Open format &bull; Songkran party</div>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">19:00 - 22:00</div>
+            <div class="timeline-bar bar-perc">
+              Live Percussion &mdash; Camilo
+              <div class="bar-label">Congas &bull; Bongos &bull; Live energy</div>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">21:00 - 01:00</div>
+            <div class="timeline-bar bar-resident">
+              Set 2: CRU Resident DJ
+              <div class="bar-label">Standard evening program continues</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <div class="section-label">April 12 &mdash; Shortened Program</div>
+          <div class="timeline">
+            <div class="timeline-row">
+              <div class="timeline-time">17:00 - 21:00</div>
+              <div class="timeline-bar bar-dj">
+                Set 1: Bright Ears DJ
+              </div>
+            </div>
+            <div class="timeline-row">
+              <div class="timeline-time">18:00 - 21:00</div>
+              <div class="timeline-bar bar-perc">
+                Live Percussion &mdash; Camilo
+              </div>
+            </div>
+            <div class="timeline-row">
+              <div class="timeline-time">21:00 onwards</div>
+              <div class="timeline-bar bar-hotel">
+                Hotel Guest DJ
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Dates + Notes -->
+      <div class="schedule-aside">
+        <div class="section-label">Program Dates</div>
+        <div class="date-grid">
+          <div class="date-row">
+            <div class="date-chip active">
+              <div class="date-num">11</div>
+              <div class="date-day">Sat</div>
+            </div>
+            <div class="date-note">Full program (17:00 - 01:00)</div>
+          </div>
+          <div class="date-row">
+            <div class="date-chip short">
+              <div class="date-num">12</div>
+              <div class="date-day">Sun</div>
+            </div>
+            <div class="date-note">Early set only (17:00 - 21:00)</div>
+          </div>
+          <div class="date-row">
+            <div class="date-chip active">
+              <div class="date-num">13</div>
+              <div class="date-day">Mon</div>
+            </div>
+            <div class="date-note">Full program (17:00 - 01:00)</div>
+          </div>
+          <div class="date-row">
+            <div class="date-chip active">
+              <div class="date-num">14</div>
+              <div class="date-day">Tue</div>
+            </div>
+            <div class="date-note">Full program (17:00 - 01:00)</div>
+          </div>
+          <div class="date-row">
+            <div class="date-chip active">
+              <div class="date-num">15</div>
+              <div class="date-day">Wed</div>
+            </div>
+            <div class="date-note">Full program (17:00 - 01:00)</div>
+          </div>
+        </div>
+
+        <div class="section-label" style="margin-top: 15px;">Music Direction</div>
+        <ul class="notes-list">
+          <li>Commercial, fun, Songkran-friendly sets</li>
+          <li>Thai songs welcome when guest profile allows</li>
+          <li>Songkran-themed dress code for all performers</li>
+          <li>Curated from Bright Ears resident roster</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page 2: Pricing -->
+<div class="slide">
+  <div class="page-pricing">
+    <div class="pricing-header">
+      <h2 class="pricing-title">Pricing</h2>
+      <img src="../branding/BE_Logo_Transparent.png" alt="" class="logo-small">
+    </div>
+
+    <table class="pricing-table">
+      <tr>
+        <th>Description</th>
+        <th>Days</th>
+        <th>Hrs / Day</th>
+        <th>Total Hrs</th>
+        <th>Rate / Hr</th>
+        <th>Amount (THB)</th>
+      </tr>
+      <tr>
+        <td>
+          <div class="row-desc">Bright Ears DJ &mdash; Set 1</div>
+          <div class="row-sub">17:00 - 21:00 &bull; April 11 - 15</div>
+        </td>
+        <td>5</td>
+        <td>4</td>
+        <td>20</td>
+        <td>927.84</td>
+        <td>18,556.80</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="row-desc">Live Percussion &mdash; Camilo</div>
+          <div class="row-sub">19:00 - 22:00 &bull; April 11, 13, 14, 15</div>
+        </td>
+        <td>4</td>
+        <td>3</td>
+        <td>12</td>
+        <td>2,000.00</td>
+        <td>24,000.00</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="row-desc">Live Percussion &mdash; Camilo</div>
+          <div class="row-sub">18:00 - 21:00 &bull; April 12</div>
+        </td>
+        <td>1</td>
+        <td>3</td>
+        <td>3</td>
+        <td>2,000.00</td>
+        <td>6,000.00</td>
+      </tr>
+    </table>
+
+    <div class="totals-section">
+      <div class="totals-box">
+        <div class="total-row">
+          <span>Sub Total</span>
+          <span>48,556.80</span>
+        </div>
+        <div class="total-row">
+          <span>VAT 7%</span>
+          <span>3,398.98</span>
+        </div>
+        <div class="total-row grand">
+          <span>Grand Total</span>
+          <span>51,955.78 THB</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pricing-notes">
+      <div class="pricing-notes-title">Notes</div>
+      <ul class="pricing-notes-list">
+        <li>Set 2 resident DJs (21:00 - 01:00) are included in the standard monthly DJ arrangement</li>
+        <li>Pricing covers the Songkran add-on program only (Set 1 + live percussion)</li>
+        <li>Equipment for percussion provided by performer</li>
+        <li>All prices exclude withholding tax (3% deducted at source per standard terms)</li>
+        <li>DJ selection curated from Bright Ears roster for best Songkran fit</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer">brightears.io</div>
+</div>
+
+</body>
+</html>

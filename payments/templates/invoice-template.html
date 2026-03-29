@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+    .page-wrapper {
+      padding: 15mm 20mm;
+      min-height: 297mm;
+      display: flex;
+      flex-direction: column;
+    }
+    .main-content { }
+    .spacer { flex-grow: 1; }
+
+    /* Header */
+    .invoice-title {
+      text-align: center;
+      font-size: 10px;
+      font-weight: bold;
+      color: #ff0000;
+      margin-bottom: 36px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .company-info { flex: 1; }
+    .company-name {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+    .company-info p { line-height: 1.5; }
+    .meta-info {
+      text-align: right;
+      min-width: 240px;
+      padding-top: 16px;
+    }
+    .meta-info p { line-height: 1.5; }
+    .meta-info .label { font-weight: bold; }
+
+    /* Customer */
+    .customer {
+      margin-top: 12px;
+      margin-bottom: 40px;
+    }
+    table.customer-table {
+      border-collapse: collapse;
+    }
+    table.customer-table td {
+      border: none;
+      padding: 1px 0;
+      vertical-align: top;
+      font-size: 10px;
+    }
+    table.customer-table td.cust-label {
+      font-weight: bold;
+      white-space: nowrap;
+      padding-right: 8px;
+    }
+
+    /* Line items table */
+    table.line-items {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 4px;
+    }
+    table.line-items th,
+    table.line-items td {
+      border: 1px solid #bfbfbf;
+      padding: 3px 5px;
+      font-size: 10px;
+      vertical-align: middle;
+    }
+    table.line-items th {
+      text-align: center;
+      font-weight: normal;
+    }
+    .col-no { width: 30px; text-align: center; }
+    .col-desc { width: 200px; text-align: center; }
+    .col-date { width: 110px; text-align: center; }
+    .col-time { width: 80px; text-align: center; border-left: none; border-right: none; }
+    .col-price { width: 100px; text-align: right; }
+    .col-amount { width: 95px; text-align: right; }
+
+    /* Summary rows */
+    table.line-items tr.summary-row td {
+      border: none;
+    }
+    table.line-items tr.summary-row td.sum-label {
+      border: 1px solid #bfbfbf;
+      text-align: center;
+      font-size: 10px;
+    }
+    table.line-items tr.summary-row td.sum-value {
+      border: 1px solid #bfbfbf;
+      text-align: right;
+    }
+    table.line-items tr.summary-boxed td.sum-label {
+      border: 1px solid #bfbfbf;
+      text-align: center;
+    }
+    table.line-items tr.summary-boxed td.sum-value {
+      border: 1px solid #bfbfbf;
+      text-align: right;
+    }
+
+    /* Written amount */
+    .written-amount {
+      border: 1px solid #bfbfbf;
+      text-align: center;
+      font-size: 9px;
+      padding: 4px 5px;
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+
+    /* Signature */
+    .signature {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 24px;
+      padding-left: 300px;
+    }
+    .signature .company { font-weight: bold; margin-bottom: 50px; }
+    .signature .line { margin-bottom: 4px; letter-spacing: 1px; }
+    .signature .name { font-weight: bold; }
+    .signature .title { font-weight: bold; }
+
+    /* Bank info */
+    .bank-info { margin-top: 20px; }
+    .bank-info .bank-header {
+      font-weight: bold;
+      text-decoration: underline;
+      margin-bottom: 6px;
+    }
+    .bank-info p { line-height: 1.5; }
+
+    /* Email link */
+    a { color: #0000ff; }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+<div class="main-content">
+
+  <p class="invoice-title">Invoice</p>
+
+  <div class="header">
+    <div class="company-info">
+      <p class="company-name">Bright Ears CO., LTD. (Head Office)</p>
+      <p>11/10, Soi Panjit 3, Garden Home Village</p>
+      <p>Phaholyothin Road, Amphur Kookot</p>
+      <p>Lum Luk Ka District, Pathum Thani, Thailand</p>
+      <p>&nbsp;</p>
+      <p>Tel.: +66 (0) 85 664 4142</p>
+      <p>Email: <a href="mailto:office@brightears.com">office@brightears.com</a></p>
+    </div>
+    <div class="meta-info">
+      <p><span class="label">INVOICE NO.: </span>$INVOICE_NO</p>
+      <p><span class="label">DATE: </span>$INVOICE_DATE</p>
+      <p><span class="label">TAX NO.: </span>$TAX_NO</p>
+    </div>
+  </div>
+
+  <div class="customer">
+    <table class="customer-table">
+      <tr>
+        <td class="cust-label">CUSTOMER NAME:</td>
+        <td>$CUSTOMER_NAME</td>
+      </tr>
+      <tr>
+        <td class="cust-label">ADDRESS:</td>
+        <td>$CUSTOMER_ADDRESS<br>$CUSTOMER_CITY</td>
+      </tr>
+      <tr>
+        <td class="cust-label">TAX ID:</td>
+        <td>$CUSTOMER_TAX_ID</td>
+      </tr>
+    </table>
+  </div>
+
+  <table class="line-items">
+    <tr>
+      <th class="col-no">NO.</th>
+      <th class="col-desc">DESCRIPTION</th>
+      <th class="col-date">DATE</th>
+      <th class="col-time">TIME</th>
+      <th class="col-price">PRICE</th>
+      <th class="col-amount">AMOUNT</th>
+    </tr>
+$LINE_ITEMS_HTML
+    <!-- Summary rows -->
+    <tr class="summary-row">
+      <td></td><td></td><td></td><td></td>
+      <td class="sum-label">Sub Total</td>
+      <td class="sum-value">$SUB_TOTAL</td>
+    </tr>
+    <tr class="summary-row">
+      <td></td><td></td><td></td><td></td>
+      <td class="sum-label">Vat 7%</td>
+      <td class="sum-value">$VAT_AMOUNT</td>
+    </tr>
+    <tr class="summary-row">
+      <td></td><td></td><td></td><td></td>
+      <td class="sum-label">Grand Total</td>
+      <td class="sum-value">$GRAND_TOTAL</td>
+    </tr>
+    <tr class="summary-boxed">
+      <td style="border:none;"></td><td style="border:none;"></td><td style="border:none;"></td><td style="border:none;"></td>
+      <td class="sum-label">WHT 3%</td>
+      <td class="sum-value">$WHT_AMOUNT</td>
+    </tr>
+    <tr class="summary-boxed">
+      <td style="border:none;"></td><td style="border:none;"></td><td style="border:none;"></td><td style="border:none;"></td>
+      <td class="sum-label">Net Amount</td>
+      <td class="sum-value">$NET_AMOUNT</td>
+    </tr>
+  </table>
+
+  <div class="written-amount">$WRITTEN_AMOUNT</div>
+
+  <div class="signature">
+    <p class="company">Bright Ears Co., Ltd.</p>
+    <p class="line">………………………..</p>
+    <p class="name">Kullaphat Wittayaphan</p>
+    <p class="title">Managing Director</p>
+  </div>
+</div>
+
+  <div class="spacer"></div>
+
+  <div class="bank-info">
+    <p class="bank-header">Bank Information:</p>
+    <p>&nbsp;</p>
+    <p>BANK OF AYUDHYA PUBLIC COMPANY LIMITED</p>
+    <p>Fortune Town BR, C.P. Tower II, Ratchadapisek Road, Dindaeng, Bangkok 10400, Thailand.</p>
+    <p>Account Name: Co.,Ltd. Bright Ears</p>
+    <p>Saving Number: 253-1-43635-5</p>
+    <p>Swift Code: AYUDTHBK</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DJ Roster - Bright Ears</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cyan: #00bbe4;
+      --teal: #2f6364;
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --off-white: #f7f7f7;
+      --gray: #333333;
+      --lavender: #d59ec9;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    @page {
+      size: 1280px 720px;
+      margin: 0;
+    }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a2e 50%, var(--teal) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(0,187,228,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .slide::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(47,99,100,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 60px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--cyan);
+    }
+
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 24px;
+      color: var(--cyan);
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+      max-width: 600px;
+      line-height: 1.6;
+      margin-top: 25px;
+    }
+
+    .logo {
+      width: 130px;
+      margin-bottom: 40px;
+    }
+
+    .logo-small {
+      position: absolute;
+      bottom: 25px;
+      right: 40px;
+      width: 50px;
+      opacity: 0.8;
+    }
+
+    /* Venue Slide */
+    .venue-slide .content {
+      align-items: flex-start;
+      padding: 50px 80px;
+    }
+
+    .venue-info {
+      display: flex;
+      gap: 40px;
+      margin-top: 25px;
+    }
+
+    .venue-detail {
+      background: rgba(255,255,255,0.05);
+      padding: 20px 35px;
+      border-radius: 15px;
+      border: 1px solid rgba(0,187,228,0.3);
+    }
+
+    .venue-detail-label {
+      font-size: 12px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .venue-detail-value {
+      font-size: 18px;
+      color: var(--white);
+    }
+
+    /* DJ Card Slide */
+    .dj-slide {
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a2e 100%);
+    }
+
+    .dj-slide .content {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: stretch;
+      padding: 0;
+    }
+
+    .dj-photo-container {
+      width: 50%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dj-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .dj-photo-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent 60%, var(--black) 100%);
+    }
+
+    .dj-info {
+      width: 50%;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .dj-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .dj-genres {
+      font-size: 16px;
+      color: var(--cyan);
+      margin-bottom: 25px;
+      font-weight: 500;
+    }
+
+    .dj-bio {
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+      max-width: 500px;
+    }
+
+    .dj-venue-tag {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      background: var(--cyan);
+      color: var(--black);
+      padding: 10px 25px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 50px;
+    }
+
+    /* Summary Slide */
+    .summary-table {
+      width: 80%;
+      margin-top: 40px;
+      border-collapse: collapse;
+    }
+
+    .summary-table th,
+    .summary-table td {
+      padding: 18px 35px;
+      text-align: left;
+      font-size: 18px;
+    }
+
+    .summary-table th {
+      color: var(--cyan);
+      font-weight: 600;
+      border-bottom: 2px solid rgba(0,187,228,0.3);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 14px;
+    }
+
+    .summary-table td {
+      color: var(--white);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .summary-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .total-box {
+      margin-top: 40px;
+      background: rgba(0,187,228,0.1);
+      border: 2px solid var(--cyan);
+      padding: 25px 50px;
+      border-radius: 15px;
+      display: flex;
+      gap: 60px;
+    }
+
+    .total-item {
+      text-align: center;
+    }
+
+    .total-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--cyan);
+    }
+
+    .total-label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 8px;
+    }
+
+    /* Contact Slide */
+    .contact-info {
+      margin-top: 40px;
+    }
+
+    .contact-item {
+      font-size: 22px;
+      color: rgba(255,255,255,0.9);
+      margin: 15px 0;
+    }
+
+    .contact-highlight {
+      color: var(--cyan);
+      font-weight: 500;
+    }
+
+    @media print {
+      .slide {
+        page-break-after: always;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Slide 1: Cover -->
+<div class="slide">
+  <div class="content">
+    <img src="../branding/BE_Logo_Transparent.png" alt="Bright Ears" class="logo">
+    <h1>DJ Introduction</h1>
+    <p class="subtitle">CRU Champagne Bar & Cocoa XO</p>
+    <p class="tagline">Centara Grand at Central World, Bangkok</p>
+  </div>
+</div>
+
+<!-- Slide 2: CRU Intro -->
+<div class="slide venue-slide">
+  <div class="content">
+    <h2>CRU Champagne Bar</h2>
+    <h3>Elegant, Sophisticated, Flexible</h3>
+    <div class="venue-info">
+      <div class="venue-detail">
+        <div class="venue-detail-label">Location</div>
+        <div class="venue-detail-value">59th Floor Rooftop</div>
+      </div>
+      <div class="venue-detail">
+        <div class="venue-detail-label">Hours</div>
+        <div class="venue-detail-value">21:00 - 01:00</div>
+      </div>
+      <div class="venue-detail">
+        <div class="venue-detail-label">Music Direction</div>
+        <div class="venue-detail-value">Elegant & Open Format</div>
+      </div>
+    </div>
+  </div>
+  <img src="../branding/BE_Logo_Transparent.png" alt="" class="logo-small">
+</div>
+
+<!-- DJ: Izaar -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/izaar-photo1.jpg" alt="Izaar" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">Izaar</h2>
+      <p class="dj-genres">Deep House / Soulful House / Chill House / Lounge</p>
+      <p class="dj-bio">Award-winning DJ with 16 years experience at Bangkok's premier venues including Sofitel, Westin Grand, and Banyan Tree. International performances across Korea, Singapore, Vietnam, and China. Pioneer Thailand Top 5 Lady DJ 2012.</p>
+    </div>
+    <span class="dj-venue-tag">CRU Sunday</span>
+  </div>
+</div>
+
+<!-- DJ: Manymaur -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/manymaur-photo1.jpg" alt="Manymaur" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">Manymaur</h2>
+      <p class="dj-genres">House / Tech House / Deep House / Afro House</p>
+      <p class="dj-bio">Versatile house DJ with residencies at Novotel, Centara Grand, Hotel Indigo, and Banyan Tree Bangkok. Natural ability to read crowds and build atmosphere across the full spectrum of house music.</p>
+    </div>
+    <span class="dj-venue-tag">CRU Tuesday</span>
+  </div>
+</div>
+
+<!-- DJ: Pound -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/pound-photo1.jpg" alt="DJ Pound" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">DJ Pound</h2>
+      <p class="dj-genres">Open Format / Pop Charts / R&B / Hip Hop / House</p>
+      <p class="dj-bio">20-year veteran captivating crowds from hotels to clubs. Started with soulful and jazzy house, now embraces the full spectrum from tech house to pop hits. Festival performer at Spicy Beach and Samila Beach Life.</p>
+    </div>
+    <span class="dj-venue-tag">CRU Thursday</span>
+  </div>
+</div>
+
+<!-- DJ: UFO -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/ufo-photo1.jpg" alt="UFO" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">UFO</h2>
+      <p class="dj-genres">Afro House / Organic House / Soulful House / Jazz</p>
+      <p class="dj-bio">Classy DJ bringing Jazzy House, Soulful Funk, and Afro rhythms to the dance floor. Founder of "We Go Deep" rooftop parties. Performed at Sirocco Lebua, SO Bangkok, and Cafe Del Mar Phuket.</p>
+    </div>
+    <span class="dj-venue-tag">CRU Monday</span>
+  </div>
+</div>
+
+<!-- DJ: April -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/april-photo1.jpg" alt="April" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">April</h2>
+      <p class="dj-genres">EDM / Top 40 / House / Tech House / Open Format</p>
+      <p class="dj-bio">Thailand's acclaimed female DJ, Winner of Pioneer Lady DJ Championship 2012. 15+ years at five-star hotels and clubs. International performances across Asia and Europe including Malaysia, Singapore, China, Taiwan, and Sweden.</p>
+    </div>
+    <span class="dj-venue-tag">CRU Saturday</span>
+  </div>
+</div>
+
+<!-- Slide: Cocoa XO Intro -->
+<div class="slide venue-slide">
+  <div class="content">
+    <h2>Cocoa XO</h2>
+    <h3>Cool, Groovy, Soulful</h3>
+    <div class="venue-info">
+      <div class="venue-detail">
+        <div class="venue-detail-label">Location</div>
+        <div class="venue-detail-value">57th Floor</div>
+      </div>
+      <div class="venue-detail">
+        <div class="venue-detail-label">Hours</div>
+        <div class="venue-detail-value">21:00 - 01:00</div>
+      </div>
+      <div class="venue-detail">
+        <div class="venue-detail-label">Music Direction</div>
+        <div class="venue-detail-value">R&B / Hip Hop / Soul</div>
+      </div>
+    </div>
+  </div>
+  <img src="../branding/BE_Logo_Transparent.png" alt="" class="logo-small">
+</div>
+
+<!-- DJ: Tohmo -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/tohmo-photo1.jpg" alt="Tohmo" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">Tohmo</h2>
+      <p class="dj-genres">Hip Hop / R&B / Lounge / Chillout</p>
+      <p class="dj-bio">DJ and Hype Man with 10+ years shaping the Thai music scene as a rapper, club hype man, and chill Hip Hop DJ. His rap roots enrich his DJ sets with narrative storytelling. Performed across Thailand from Bangkok clubs to Phuket beaches.</p>
+    </div>
+    <span class="dj-venue-tag">Cocoa XO Mon & Thu</span>
+  </div>
+</div>
+
+<!-- DJ: Krit -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/krit-photo1.jpg" alt="Krit" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">Krit</h2>
+      <p class="dj-genres">Nu Disco / House / R&B / Hip Hop / Pop</p>
+      <p class="dj-bio">One of Bangkok's most versatile selectors since 2014. Member of BAD KIDS collective curated by SUPERRZAAAP! & BADMOTEL. Residencies at Grease 49, Beer Belly, Siwilai City Club, and all Centara rooftop venues.</p>
+    </div>
+    <span class="dj-venue-tag">Cocoa XO Tuesday</span>
+  </div>
+</div>
+
+<!-- DJ: Benji -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/benji-photo1.jpg" alt="Benji" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">Benji</h2>
+      <p class="dj-genres">Afro House / Organic House / Soulful House</p>
+      <p class="dj-bio">Afro and Organic House specialist known for weaving organic house remixes of familiar tracks into sophisticated sets. Regular performer at Tribe Beach Club and Escape Bangkok. Creates accessible yet refined sounds.</p>
+    </div>
+    <span class="dj-venue-tag">Cocoa XO Wednesday</span>
+  </div>
+</div>
+
+<!-- DJ: Linze -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/linze-photo1.jpg" alt="Linze" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">Linze</h2>
+      <p class="dj-genres">Pop & Dance / Thai Pop / K-Pop / Open Format</p>
+      <p class="dj-bio">Open format DJ specializing in pop and dance music with a flair for Thai pop and K-pop. Known for taking requests and keeping the flow fresh and crowd-focused. Regular at The Back, Brick Bar, and Club 24.</p>
+    </div>
+    <span class="dj-venue-tag">XO Fri + CRU Wed</span>
+  </div>
+</div>
+
+<!-- DJ: Eskay Da Real -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/eskay-photo1.jpg" alt="Eskay Da Real" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">Eskay Da Real</h2>
+      <p class="dj-genres">Hip Hop / R&B / Afro House / Latino / Pop</p>
+      <p class="dj-bio">French DJ and producer with 15+ years experience. Known for his signature "French Touch" blending Hip Hop, R&B, and Afro rhythms. Electrified the Parisian nightlife before bringing his sound to Bangkok. Resident at Basement Club.</p>
+    </div>
+    <span class="dj-venue-tag">XO Sat + CRU Fri</span>
+  </div>
+</div>
+
+<!-- DJ: JJ (Cocoa XO) -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/jj-photo1.jpg" alt="JJ" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">JJ</h2>
+      <p class="dj-genres">Soul / Funk / Disco / R&B / Hip Hop</p>
+      <p class="dj-bio">Her soul/funk/disco expertise fits perfectly with Cocoa XO's old school R&B vibe. Residencies at Bar Archive and She Sails Rayong. Also plays CRU on alternating Thursdays.</p>
+    </div>
+    <span class="dj-venue-tag">XO Sun + CRU Thu</span>
+  </div>
+</div>
+
+<!-- DJ: Camilo (Cocoa XO) -->
+<div class="slide dj-slide">
+  <div class="content">
+    <div class="dj-photo-container">
+      <img src="../djs/images/camilo-photo1.png" alt="Camilo" class="dj-photo">
+      <div class="dj-photo-overlay"></div>
+    </div>
+    <div class="dj-info">
+      <h2 class="dj-name">Camilo</h2>
+      <p class="dj-genres">Salsa / Latin / Tropical / Afro-Latin</p>
+      <p class="dj-bio">Colombian DJ and percussionist with 25+ years experience. Trained with legendary Salsa musicians in Medellin at Latina Stereo Studio. International performances across Thailand, Indonesia, Vietnam, and Pakistan.</p>
+    </div>
+    <span class="dj-venue-tag">Cocoa XO (Sub)</span>
+  </div>
+</div>
+
+<!-- Summary Slide -->
+<div class="slide">
+  <div class="content">
+    <h2>Weekly Schedule</h2>
+    <table class="summary-table">
+      <tr>
+        <th>Day</th>
+        <th>CRU (59F)</th>
+        <th>Cocoa XO (57F)</th>
+      </tr>
+      <tr>
+        <td>Monday</td>
+        <td>UFO</td>
+        <td>Tohmo</td>
+      </tr>
+      <tr>
+        <td>Tuesday</td>
+        <td>Manymaur</td>
+        <td>Krit</td>
+      </tr>
+      <tr>
+        <td>Wednesday</td>
+        <td>Linze</td>
+        <td>Benji</td>
+      </tr>
+      <tr>
+        <td>Thursday</td>
+        <td>Pound / JJ</td>
+        <td>Tohmo</td>
+      </tr>
+      <tr>
+        <td>Friday</td>
+        <td>Eskay Da Real</td>
+        <td>Linze</td>
+      </tr>
+      <tr>
+        <td>Saturday</td>
+        <td>April</td>
+        <td>Eskay Da Real</td>
+      </tr>
+      <tr>
+        <td>Sunday</td>
+        <td>Izaar</td>
+        <td>JJ</td>
+      </tr>
+    </table>
+  </div>
+  <img src="../branding/BE_Logo_Transparent.png" alt="" class="logo-small">
+</div>
+
+<!-- Roster Summary Slide -->
+<div class="slide">
+  <div class="content">
+    <h2>Roster Summary</h2>
+    <table class="summary-table">
+      <tr>
+        <th>Venue</th>
+        <th>DJs</th>
+        <th>Primary Style</th>
+      </tr>
+      <tr>
+        <td>CRU Champagne Bar</td>
+        <td>6</td>
+        <td>Elegant / Open Format</td>
+      </tr>
+      <tr>
+        <td>Cocoa XO</td>
+        <td>5</td>
+        <td>R&B / Hip Hop / Soul</td>
+      </tr>
+    </table>
+    <div class="total-box">
+      <div class="total-item">
+        <div class="total-number">12</div>
+        <div class="total-label">Total DJs</div>
+      </div>
+      <div class="total-item">
+        <div class="total-number">7</div>
+        <div class="total-label">Days Coverage</div>
+      </div>
+      <div class="total-item">
+        <div class="total-number">2</div>
+        <div class="total-label">Venues</div>
+      </div>
+    </div>
+  </div>
+  <img src="../branding/BE_Logo_Transparent.png" alt="" class="logo-small">
+</div>
+
+<!-- Contact Slide -->
+<div class="slide">
+  <div class="content">
+    <img src="../branding/BE_Logo_Transparent.png" alt="Bright Ears" class="logo">
+    <p class="contact-item">brightears.io</p>
+  </div>
+</div>
+
+</body>
+</html>

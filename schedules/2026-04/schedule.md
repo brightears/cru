@@ -22,7 +22,7 @@ Centara Grand at Central World, Bangkok
 | Apr 9 | Thu | Pound | Tohmo |
 | Apr 10 | Fri | Camilo | Linze |
 | Apr 11 | Sat | April | Pound |
-| Apr 12 | Sun | Izaar | Krit |
+| Apr 12 | Sun | **Guest DJ** | Izaar |
 | Apr 13 | Mon | UFO | Tohmo |
 | Apr 14 | Tue | Manymaur | Krit |
 | Apr 15 | Wed | Linze | Benji |
@@ -56,7 +56,8 @@ Centara Grand at Central World, Bangkok
 | Pound | 4 | Thu 2, 9, 23, 30 |
 | Camilo | 4 | Fri 3, 10, 17, 24 |
 | April | 4 | Sat 4, 11, 18, 25 |
-| Izaar | 5 | Sun 5, 12, 19, 26 + Tue 28 |
+| Izaar | 4 | Sun 5, 19, 26 + Tue 28 |
+| *Guest DJ* | 1 | Sun 12 |
 | **Total** | **30** | |
 
 ### Cocoa XO
@@ -69,7 +70,7 @@ Centara Grand at Central World, Bangkok
 | Benji | 5 | Wed 1, 8, 15, 22, 29 |
 | Linze | 4 | Fri 3, 10, 17, 24 |
 | Pound | 4 | Sat 4, 11, 18, 25 |
-| Krit | 1 | Sun 12 |
+| Izaar | 1 | Sun 12 |
 | JJ | 3 | Sun 5, 19, 26 |
 | **Total** | **30** | |
 
@@ -89,7 +90,7 @@ Centara Grand at Central World, Bangkok
 | Pound | 4 | 12,800 | 640 | 12,160 |
 | Camilo | 4 | 12,800 | 640 | 12,160 |
 | April | 4 | 12,800 | 640 | 12,160 |
-| Izaar | 5 | 16,000 | 800 | 15,200 |
+| Izaar | 4 | 12,800 | 640 | 12,160 |
 | **Total** | **30** | **96,000** | **4,800** | **91,200** |
 
 ### Cocoa XO
@@ -102,7 +103,7 @@ Centara Grand at Central World, Bangkok
 | Benji | 5 | 16,000 | 800 | 15,200 |
 | Linze | 4 | 12,800 | 640 | 12,160 |
 | Pound | 4 | 12,800 | 640 | 12,160 |
-| Krit | 1 | 3,200 | 160 | 3,040 |
+| Izaar | 1 | 3,200 | 160 | 3,040 |
 | JJ | 3 | 9,600 | 480 | 9,120 |
 | **Total** | **30** | **96,000** | **4,800** | **91,200** |
 

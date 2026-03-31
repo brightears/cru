@@ -33,12 +33,12 @@ Centara Grand at Central World, Bangkok
 | Apr 20 | Mon | UFO | Tohmo |
 | Apr 21 | Tue | Manymaur | Krit |
 | Apr 22 | Wed | Linze | Benji |
-| Apr 23 | Thu | Pound | Tohmo |
+| Apr 23 | Thu | Pound | Yui Truluv |
 | Apr 24 | Fri | Camilo | Linze |
 | Apr 25 | Sat | April | Pound |
 | Apr 26 | Sun | Izaar | JJ |
 | Apr 27 | Mon | UFO | Tohmo |
-| Apr 28 | Tue | Manymaur | Krit |
+| Apr 28 | Tue | Izaar | Krit |
 | Apr 29 | Wed | Linze | Benji |
 | Apr 30 | Thu | Pound | Tohmo |
 
@@ -51,19 +51,20 @@ Centara Grand at Central World, Bangkok
 | DJ | Shifts | Dates |
 |----|--------|-------|
 | UFO | 4 | Mon 6, 13, 20, 27 |
-| Manymaur | 4 | Tue 7, 14, 21, 28 |
+| Manymaur | 3 | Tue 7, 14, 21 |
 | Linze | 6 | Wed 1, 8, 15, 22, 29 + Thu 16 |
 | Pound | 4 | Thu 2, 9, 23, 30 |
 | Camilo | 4 | Fri 3, 10, 17, 24 |
 | April | 4 | Sat 4, 11, 18, 25 |
-| Izaar | 4 | Sun 5, 12, 19, 26 |
+| Izaar | 5 | Sun 5, 12, 19, 26 + Tue 28 |
 | **Total** | **30** | |
 
 ### Cocoa XO
 
 | DJ | Shifts | Dates |
 |----|--------|-------|
-| Tohmo | 9 | Mon 6, 13, 20, 27 + Thu 2, 9, 16, 23, 30 |
+| Tohmo | 8 | Mon 6, 13, 20, 27 + Thu 2, 9, 16, 30 |
+| Yui Truluv | 1 | Thu 23 |
 | Krit | 4 | Tue 7, 14, 21, 28 |
 | Benji | 5 | Wed 1, 8, 15, 22, 29 |
 | Linze | 4 | Fri 3, 10, 17, 24 |
@@ -82,19 +83,20 @@ Centara Grand at Central World, Bangkok
 | DJ | Shifts | Gross (฿) | WHT 5% (฿) | Net (฿) |
 |----|--------|-----------|------------|---------|
 | UFO | 4 | 12,800 | 640 | 12,160 |
-| Manymaur | 4 | 12,800 | 640 | 12,160 |
+| Manymaur | 3 | 9,600 | 480 | 9,120 |
 | Linze | 6 | 19,200 | 960 | 18,240 |
 | Pound | 4 | 12,800 | 640 | 12,160 |
 | Camilo | 4 | 12,800 | 640 | 12,160 |
 | April | 4 | 12,800 | 640 | 12,160 |
-| Izaar | 4 | 12,800 | 640 | 12,160 |
+| Izaar | 5 | 16,000 | 800 | 15,200 |
 | **Total** | **30** | **96,000** | **4,800** | **91,200** |
 
 ### Cocoa XO
 
 | DJ | Shifts | Gross (฿) | WHT 5% (฿) | Net (฿) |
 |----|--------|-----------|------------|---------|
-| Tohmo | 9 | 28,800 | 1,440 | 27,360 |
+| Tohmo | 8 | 25,600 | 1,280 | 24,320 |
+| Yui Truluv | 1 | 3,200 | 160 | 3,040 |
 | Krit | 4 | 12,800 | 640 | 12,160 |
 | Benji | 5 | 16,000 | 800 | 15,200 |
 | Linze | 4 | 12,800 | 640 | 12,160 |

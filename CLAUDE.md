@@ -108,7 +108,7 @@ Invoice includes 3% WHT buffer (hotel deducts 3% WHT from payment).
 
 ---
 
-## Current Weekly Schedule (March 2026)
+## Current Weekly Schedule (April 2026)
 
 | Day | CRU (21:00-01:00) | Cocoa XO (21:00-01:00) |
 |-----|-------------------|------------------------|
@@ -116,15 +116,15 @@ Invoice includes 3% WHT buffer (hotel deducts 3% WHT from payment).
 | Tue | Manymaur | Krit |
 | Wed | Linze | Benji |
 | Thu | Pound | Tohmo |
-| Fri | Eskay Da Real | Linze |
-| Sat | Camilo | Pound |
+| Fri | Camilo | Linze |
+| Sat | April | Pound |
 | Sun | Izaar | JJ |
 
 **Multi-venue DJs:** Linze (CRU Wed + XO Fri), Pound (CRU Thu + XO Sat)
 
 ---
 
-## Current DJ Roster (March 2026 — 11 Active DJs)
+## Current DJ Roster (April 2026 — 11 Active DJs)
 
 ### CRU DJs (7 primary)
 | DJ | Schedule | Style |
@@ -133,8 +133,8 @@ Invoice includes 3% WHT buffer (hotel deducts 3% WHT from payment).
 | Manymaur | Tuesday | House, Tech House, Afro House, Commercial |
 | Linze | Wednesday | Pop, Thai Pop, K-Pop, Open Format |
 | Pound | Thursday | Open Format, Pop, R&B, Hip Hop, House |
-| Eskay Da Real | Friday | Hip Hop, R&B, Afro, Latino, Open Format |
-| Camilo | Saturday | Salsa, Latin, Tropical, Afro-Latin |
+| Camilo | Friday | Salsa, Latin, Tropical, Afro-Latin |
+| April | Saturday | EDM, Top 40, House, Open Format |
 | Izaar | Sunday | Deep House, Soulful House, Lounge |
 
 ### Cocoa XO DJs (6 primary)
@@ -147,19 +147,18 @@ Invoice includes 3% WHT buffer (hotel deducts 3% WHT from payment).
 | Pound | Sat (+ CRU Thu) | Open Format, Pop, R&B, Hip Hop, House |
 | JJ | Sunday | Soul, Funk, Disco, R&B, Hip Hop |
 
-### Substitute DJs (March)
-| DJ | Schedule | Style |
+### Substitute DJs
+| DJ | Status | Style |
 |---|---|---|
-| Yui Truluv | XO Sat 14, 21 | House, Tech House, Melodic |
-| Camilo | XO Tue 10, Sun 22 (+ CRU Sat) | Salsa, Latin, Tropical, Afro-Latin |
+| Yui Truluv | On standby (potential Songkran) | House, Tech House, Melodic |
 
 ### DJs Working Both Venues
 - **Linze:** CRU Wednesday + Cocoa XO Friday
 - **Pound:** CRU Thursday + Cocoa XO Saturday
 
-### Inactive for March
+### Inactive
 - **Scotty B:** No longer at Centara
-- **April:** Not available
+- **Eskay Da Real:** Not available from April
 
 ### DJs Also at NOBU/Le Du Kaan
 - Linze, Benji, Izaar, Manymaur, UFO, Pound (profiles shared)
@@ -181,6 +180,8 @@ Invoice includes 3% WHT buffer (hotel deducts 3% WHT from payment).
 | `presentations/songkran-2026-guest-dj-proposal.pdf` | PDF version (2 pages) |
 | `presentations/songkran-2026-inhouse-proposal.html` | Songkran program — Option B: In-House DJ |
 | `presentations/songkran-2026-inhouse-proposal.pdf` | PDF version (2 pages) |
+| `presentations/april-2026-schedule.html` | April 2026 monthly schedule |
+| `presentations/april-2026-schedule.pdf` | PDF version (3 pages) |
 
 ---
 
@@ -190,6 +191,7 @@ Invoice includes 3% WHT buffer (hotel deducts 3% WHT from payment).
 |-------|----------|
 | February 2026 | `schedules/2026-02/schedule.md` |
 | March 2026 | `schedules/2026-03/schedule.md` |
+| April 2026 | `schedules/2026-04/schedule.md` |
 
 ---
 
@@ -228,7 +230,8 @@ CRU/
 │   └── images/             # DJ photos
 ├── schedules/
 │   ├── 2026-02/            # February 2026 schedule
-│   └── 2026-03/            # March 2026 schedule
+│   ├── 2026-03/            # March 2026 schedule
+│   └── 2026-04/            # April 2026 schedule
 ├── presentations/           # DJ roster & schedule presentations
 ├── payments/
 │   ├── templates/          # WHT form templates (12 DJs) + invoice HTML template
@@ -360,6 +363,12 @@ When adding a new DJ, create a markdown file in `djs/profiles/` with:
 - [x] Invoice #3178 (Mar 2026) generated — 2 CRU guest DJ deductions (Mar 7, 8), net ฿231,587.63
 - [x] Songkran 2026 proposals created — Option A: Guest DJ (฿96,300), Option B: In-House (฿51,955.78)
 
+### Completed (March 31, 2026)
+- [x] April 2026 schedule created (markdown + HTML + PDF)
+- [x] Roster updated: Eskay out, Camilo→CRU Fri, April returns→CRU Sat
+- [x] Linze replaces Pound at CRU on Apr 16
+- [x] Project pushed to GitHub (brightears/cru)
+
 ---
 
 ## Notes
@@ -369,6 +378,20 @@ When adding a new DJ, create a markdown file in `djs/profiles/` with:
 - Both CRU and Cocoa XO are outdoor venues - weather cancellations possible
 - Linze works both venues (shown in Cocoa XO section in presentations)
 - Pound plays CRU Thu + Cocoa XO Sat (also Le Du Kaan)
+
+### April 2026 Specific Notes
+
+**Roster changes from March:**
+- Eskay Da Real removed (not available from April)
+- Camilo moves from CRU Saturday to CRU Friday (replaces Eskay)
+- April returns to CRU Saturday
+
+**Schedule exceptions:**
+- Apr 16 (Thu): Linze replaces Pound at CRU
+
+**Songkran (Apr 11-15):** Proposals sent to Nicolas, awaiting confirmation. Yui Truluv on standby for Songkran slots.
+
+**Totals:** 60 performances, ฿192,000 gross, ฿182,400 net (11 DJs)
 
 ### March 2026 Specific Notes
 

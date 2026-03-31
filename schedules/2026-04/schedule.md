@@ -25,7 +25,7 @@ Centara Grand at Central World, Bangkok
 | Apr 12 | Sun | **Guest DJ** | Krit |
 | Apr 13 | Mon | UFO | Tohmo |
 | Apr 14 | Tue | Manymaur | Krit |
-| Apr 15 | Wed | Linze | Benji |
+| Apr 15 | Wed | Krit | Benji |
 | Apr 16 | Thu | Linze | Tohmo |
 | Apr 17 | Fri | Camilo | Linze |
 | Apr 18 | Sat | April | Pound |
@@ -52,7 +52,8 @@ Centara Grand at Central World, Bangkok
 |----|--------|-------|
 | UFO | 4 | Mon 6, 13, 20, 27 |
 | Manymaur | 3 | Tue 7, 14, 21 |
-| Linze | 6 | Wed 1, 8, 15, 22, 29 + Thu 16 |
+| Linze | 5 | Wed 1, 8, 22, 29 + Thu 16 |
+| Krit | 1 | Wed 15 |
 | Pound | 4 | Thu 2, 9, 23, 30 |
 | Camilo | 4 | Fri 3, 10, 17, 24 |
 | April | 4 | Sat 4, 11, 18, 25 |
@@ -86,7 +87,8 @@ Centara Grand at Central World, Bangkok
 |----|--------|-----------|------------|---------|
 | UFO | 4 | 12,800 | 640 | 12,160 |
 | Manymaur | 3 | 9,600 | 480 | 9,120 |
-| Linze | 6 | 19,200 | 960 | 18,240 |
+| Linze | 5 | 16,000 | 800 | 15,200 |
+| Krit | 1 | 3,200 | 160 | 3,040 |
 | Pound | 4 | 12,800 | 640 | 12,160 |
 | Camilo | 4 | 12,800 | 640 | 12,160 |
 | April | 4 | 12,800 | 640 | 12,160 |

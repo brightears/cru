@@ -12,7 +12,7 @@ Centara Grand at Central World, Bangkok
 | Date | Day | CRU (59F) | Cocoa XO (57F) |
 |------|-----|-----------|----------------|
 | Apr 1 | Wed | **Camilo** | Benji |
-| Apr 2 | Thu | Pound | Tohmo |
+| Apr 2 | Thu | **JJ** | Tohmo |
 | Apr 3 | Fri | Camilo | Linze |
 | Apr 4 | Sat | April | Pound |
 | Apr 5 | Sun | Izaar | JJ |

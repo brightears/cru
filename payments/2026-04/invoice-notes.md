@@ -48,4 +48,16 @@ start until 21:00 — no overlap.
 - Pay UFO for 1 extra DJ shift (Apr 13)
 - Pay April for 1 extra DJ shift (Apr 14)
 - Pay Camilo for 1 extra DJ shift (Apr 15)
+- **Pay Yui Truluv for 1 extra DJ shift (Apr 16)**
 - DJ rate: ฿3,200 gross per 4hr shift, ฿160 WHT, ฿3,040 net
+
+## Apr 16 — Extra Songkran Extension
+
+Centara extended the Songkran setup by one more day:
+- **Apr 16 (Wed):** Yui Truluv — Early DJ set
+- **Apr 16 (Wed):** Camilo — Percussions 21:00-23:00 (2 hours)
+
+### Invoice:
+- Yui Truluv early DJ: same rate as other Songkran extras (฿3,200 gross)
+- Camilo percussion: ฿2,000/hr × 2hr = ฿4,000 (charge to venue), pay ฿1,500/hr × 2hr = ฿3,000 (to Camilo)
+- Add as line items on April CRU invoice

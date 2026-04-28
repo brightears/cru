@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>May 2026 Schedule - Bright Ears</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --cyan: #00bbe4; --teal: #2f6364; --lavender: #d59ec9; --black: #0a0a0a; --white: #ffffff; --gray: #333333; }
+    body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--white); }
+    @page { size: 1280px 720px; margin: 0; }
+    .slide { width: 1280px; height: 720px; background: linear-gradient(135deg, var(--black) 0%, #1a1a2e 50%, var(--teal) 100%); page-break-after: always; position: relative; overflow: hidden; }
+    .slide::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(0,187,228,0.12) 0%, transparent 70%); border-radius: 50%; }
+    .page-cover { display: flex; flex-direction: column; padding: 40px 60px; position: relative; z-index: 1; }
+    .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+    .logo { width: 100px; }
+    .title-block { text-align: center; flex: 1; }
+    .title { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .subtitle { font-size: 20px; color: var(--cyan); font-weight: 300; letter-spacing: 3px; text-transform: uppercase; }
+    .venues { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 8px; }
+    .overview-section { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .overview-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    .overview-table th { background: rgba(0,187,228,0.15); color: var(--cyan); font-weight: 600; padding: 14px 16px; text-align: center; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 2px solid rgba(0,187,228,0.3); }
+    .overview-table th:first-child { text-align: left; width: 100px; }
+    .overview-table td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 15px; text-align: center; }
+    .overview-table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+    .day-label { font-weight: 600; color: var(--white); text-align: left !important; }
+    .dj-cru { color: var(--cyan); }
+    .dj-cocoa { color: var(--lavender); }
+    .notes { font-size: 12px; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 15px; }
+    .notes span { display: inline-block; margin-right: 20px; }
+    .page-calendar { padding: 30px 40px; position: relative; z-index: 1; }
+    .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .calendar-title { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--cyan); }
+    .logo-small { width: 50px; opacity: 0.8; }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; }
+    .calendar-day-header { background: rgba(0,187,228,0.2); padding: 10px 4px; text-align: center; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--cyan); }
+    .calendar-cell { background: rgba(255,255,255,0.03); padding: 6px; min-height: 85px; display: flex; flex-direction: column; }
+    .calendar-cell.empty { background: rgba(0,0,0,0.2); }
+    .day-number { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .dj-slot { font-size: 10px; line-height: 1.4; padding: 2px 0; }
+    .dj-slot.cru { color: var(--cyan); }
+    .dj-slot.cocoa { color: var(--lavender); }
+    .calendar-legend { display: flex; justify-content: center; gap: 30px; margin-top: 15px; font-size: 11px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .legend-dot.cru { background: var(--cyan); }
+    .legend-dot.cocoa { background: var(--lavender); }
+    .page-roster { padding: 30px 50px; position: relative; z-index: 1; }
+    .roster-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    .roster-title { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--cyan); }
+    .venue-section { margin-bottom: 25px; }
+    .venue-label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .venue-label.cru { color: var(--cyan); border-color: rgba(0,187,228,0.3); }
+    .venue-label.cocoa { color: var(--lavender); border-color: rgba(213,158,201,0.3); }
+    .dj-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+    .dj-card { display: flex; flex-direction: column; align-items: center; width: 100px; }
+    .dj-photo { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid rgba(255,255,255,0.2); margin-bottom: 6px; }
+    .dj-card.cru .dj-photo { border-color: var(--cyan); }
+    .dj-card.cocoa .dj-photo { border-color: var(--lavender); }
+    .dj-name { font-size: 11px; font-weight: 600; color: var(--white); text-align: center; line-height: 1.2; }
+    .dj-days { font-size: 9px; color: rgba(255,255,255,0.5); text-align: center; }
+    .footer { position: absolute; bottom: 25px; left: 0; right: 0; text-align: center; font-size: 14px; color: rgba(255,255,255,0.6); }
+    @media print { .slide { page-break-after: always; -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+  </style>
+</head>
+<body>
+
+<!-- Page 1: Cover + Weekly Overview -->
+<div class="slide">
+  <div class="page-cover">
+    <div class="header">
+      <img src="../branding/BE_Logo_Transparent.png" alt="Bright Ears" class="logo">
+      <div class="title-block">
+        <h1 class="title">DJ Schedule</h1>
+        <p class="subtitle">May 2026</p>
+        <p class="venues">CRU Champagne Bar & Cocoa XO &bull; Centara Grand at Central World</p>
+      </div>
+      <div style="width: 100px;"></div>
+    </div>
+
+    <div class="overview-section">
+      <table class="overview-table">
+        <tr>
+          <th>Day</th>
+          <th>CRU (59F)<br><span style="font-weight:300;font-size:10px;">21:00-01:00</span></th>
+          <th>Cocoa XO (57F)<br><span style="font-weight:300;font-size:10px;">21:00-01:00</span></th>
+        </tr>
+        <tr><td class="day-label">Monday</td><td class="dj-cru">UFO</td><td class="dj-cocoa">Tohmo</td></tr>
+        <tr><td class="day-label">Tuesday</td><td class="dj-cru">Manymaur</td><td class="dj-cocoa">Krit</td></tr>
+        <tr><td class="day-label">Wednesday</td><td class="dj-cru">Linze</td><td class="dj-cocoa">Benji</td></tr>
+        <tr><td class="day-label">Thursday</td><td class="dj-cru">Pound</td><td class="dj-cocoa">Tohmo</td></tr>
+        <tr><td class="day-label">Friday</td><td class="dj-cru">Camilo</td><td class="dj-cocoa">Linze</td></tr>
+        <tr><td class="day-label">Saturday</td><td class="dj-cru">April</td><td class="dj-cocoa">Pound</td></tr>
+        <tr><td class="day-label">Sunday</td><td class="dj-cru">Izaar</td><td class="dj-cocoa">JJ</td></tr>
+      </table>
+
+      <div class="notes">
+        <span>Linze: CRU Wed + XO Fri</span>
+        <span>Pound: CRU Thu + XO Sat</span>
+        <span>Tohmo: XO Mon + Thu</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page 2: Full Month Calendar -->
+<div class="slide">
+  <div class="page-calendar">
+    <div class="calendar-header">
+      <h2 class="calendar-title">May 2026</h2>
+      <img src="../branding/BE_Logo_Transparent.png" alt="" class="logo-small">
+    </div>
+
+    <div class="calendar-grid">
+      <!-- Day Headers -->
+      <div class="calendar-day-header">Sun</div>
+      <div class="calendar-day-header">Mon</div>
+      <div class="calendar-day-header">Tue</div>
+      <div class="calendar-day-header">Wed</div>
+      <div class="calendar-day-header">Thu</div>
+      <div class="calendar-day-header">Fri</div>
+      <div class="calendar-day-header">Sat</div>
+
+      <!-- May 2026 calendar -->
+      <div class="calendar-cell empty"></div>
+      <div class="calendar-cell empty"></div>
+      <div class="calendar-cell empty"></div>
+      <div class="calendar-cell empty"></div>
+      <div class="calendar-cell empty"></div>
+      <div class="calendar-cell special">
+        <div class="day-number">1</div>
+        <div class="dj-slot cru">CRU: Camilo</div>
+        <div class="dj-slot cocoa">XO: Tohmo</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">2</div>
+        <div class="dj-slot cru">CRU: April</div>
+        <div class="dj-slot cocoa">XO: Pound</div>
+      </div>
+      <div class="calendar-cell special">
+        <div class="day-number">3</div>
+        <div class="dj-slot cru">CRU: Izaar</div>
+        <div class="dj-slot cocoa">XO: JJ</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">4</div>
+        <div class="dj-slot cru">CRU: UFO</div>
+        <div class="dj-slot cocoa">XO: Tohmo</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">5</div>
+        <div class="dj-slot cru">CRU: Manymaur</div>
+        <div class="dj-slot cocoa">XO: Krit</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">6</div>
+        <div class="dj-slot cru">CRU: Linze</div>
+        <div class="dj-slot cocoa">XO: Benji</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">7</div>
+        <div class="dj-slot cru">CRU: Pound</div>
+        <div class="dj-slot cocoa">XO: Tohmo</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">8</div>
+        <div class="dj-slot cru">CRU: Camilo</div>
+        <div class="dj-slot cocoa">XO: Linze</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">9</div>
+        <div class="dj-slot cru">CRU: April</div>
+        <div class="dj-slot cocoa">XO: Pound</div>
+      </div>
+      <div class="calendar-cell special">
+        <div class="day-number">10</div>
+        <div class="dj-slot cru">CRU: Izaar</div>
+        <div class="dj-slot cocoa">XO: Krit</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">11</div>
+        <div class="dj-slot cru">CRU: UFO</div>
+        <div class="dj-slot cocoa">XO: Tohmo</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">12</div>
+        <div class="dj-slot cru">CRU: Manymaur</div>
+        <div class="dj-slot cocoa">XO: Krit</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">13</div>
+        <div class="dj-slot cru highlight">CRU: Camilo</div>
+        <div class="dj-slot cocoa">XO: Benji</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">14</div>
+        <div class="dj-slot cru">CRU: Pound</div>
+        <div class="dj-slot cocoa">XO: Tohmo</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">15</div>
+        <div class="dj-slot cru">CRU: Camilo</div>
+        <div class="dj-slot cocoa highlight">XO: Krit</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">16</div>
+        <div class="dj-slot cru">CRU: April</div>
+        <div class="dj-slot cocoa">XO: Pound</div>
+      </div>
+      <div class="calendar-cell special">
+        <div class="day-number">17</div>
+        <div class="dj-slot cru">CRU: Izaar</div>
+        <div class="dj-slot cocoa">XO: Krit</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">18</div>
+        <div class="dj-slot cru">CRU: UFO</div>
+        <div class="dj-slot cocoa">XO: Tohmo</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">19</div>
+        <div class="dj-slot cru">CRU: Manymaur</div>
+        <div class="dj-slot cocoa">XO: Krit</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">20</div>
+        <div class="dj-slot cru">CRU: Linze</div>
+        <div class="dj-slot cocoa">XO: Benji</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">21</div>
+        <div class="dj-slot cru">CRU: Pound</div>
+        <div class="dj-slot cocoa">XO: Tohmo</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">22</div>
+        <div class="dj-slot cru">CRU: Camilo</div>
+        <div class="dj-slot cocoa">XO: Linze</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">23</div>
+        <div class="dj-slot cru">CRU: April</div>
+        <div class="dj-slot cocoa">XO: Pound</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">24</div>
+        <div class="dj-slot cru">CRU: Izaar</div>
+        <div class="dj-slot cocoa">XO: JJ</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">25</div>
+        <div class="dj-slot cru">CRU: UFO</div>
+        <div class="dj-slot cocoa">XO: Tohmo</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">26</div>
+        <div class="dj-slot cru">CRU: Manymaur</div>
+        <div class="dj-slot cocoa">XO: Krit</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">27</div>
+        <div class="dj-slot cru">CRU: Linze</div>
+        <div class="dj-slot cocoa">XO: Benji</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">28</div>
+        <div class="dj-slot cru">CRU: Pound</div>
+        <div class="dj-slot cocoa">XO: Tohmo</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">29</div>
+        <div class="dj-slot cru">CRU: Camilo</div>
+        <div class="dj-slot cocoa">XO: Linze</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">30</div>
+        <div class="dj-slot cru">CRU: April</div>
+        <div class="dj-slot cocoa">XO: Pound</div>
+      </div>
+      <div class="calendar-cell">
+        <div class="day-number">31</div>
+        <div class="dj-slot cru">CRU: Izaar</div>
+        <div class="dj-slot cocoa">XO: Krit</div>
+      </div>
+      <div class="calendar-cell empty"></div>
+      <div class="calendar-cell empty"></div>
+      <div class="calendar-cell empty"></div>
+      <div class="calendar-cell empty"></div>
+      <div class="calendar-cell empty"></div>
+      <div class="calendar-cell empty"></div>
+    </div>
+
+    <div class="calendar-legend">
+      <div class="legend-item">
+        <div class="legend-dot cru"></div>
+        <span>CRU Champagne Bar (59F)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot cocoa"></div>
+        <span>Cocoa XO (57F)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page 3: DJ Roster with Photos -->
+<div class="slide">
+  <div class="page-roster">
+    <div class="roster-header">
+      <h2 class="roster-title">The Lineup</h2>
+      <img src="../branding/BE_Logo_Transparent.png" alt="" class="logo-small">
+    </div>
+
+    <!-- CRU DJs -->
+    <div class="venue-section">
+      <div class="venue-label cru">CRU CHAMPAGNE BAR (21:00-01:00)</div>
+      <div class="dj-grid">
+        <div class="dj-card cru">
+          <img src="../djs/images/ufo-photo1.jpg" alt="UFO" class="dj-photo">
+          <div class="dj-name">UFO</div>
+          <div class="dj-days">Monday</div>
+        </div>
+        <div class="dj-card cru">
+          <img src="../djs/images/manymaur-photo1.jpg" alt="Manymaur" class="dj-photo">
+          <div class="dj-name">Manymaur</div>
+          <div class="dj-days">Tuesday</div>
+        </div>
+        <div class="dj-card cru">
+          <img src="../djs/images/pound-photo1.jpg" alt="Pound" class="dj-photo">
+          <div class="dj-name">Pound</div>
+          <div class="dj-days">Thursday</div>
+        </div>
+        <div class="dj-card cru">
+          <img src="../djs/images/camilo-photo1.png" alt="Camilo" class="dj-photo">
+          <div class="dj-name">Camilo</div>
+          <div class="dj-days">Friday</div>
+        </div>
+        <div class="dj-card cru">
+          <img src="../djs/images/april-photo1.jpg" alt="April" class="dj-photo">
+          <div class="dj-name">April</div>
+          <div class="dj-days">Saturday</div>
+        </div>
+        <div class="dj-card cru">
+          <img src="../djs/images/izaar-photo1.jpg" alt="Izaar" class="dj-photo">
+          <div class="dj-name">Izaar</div>
+          <div class="dj-days">Sunday</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cocoa XO DJs -->
+    <div class="venue-section">
+      <div class="venue-label cocoa">COCOA XO (21:00-01:00)</div>
+      <div class="dj-grid">
+        <div class="dj-card cocoa">
+          <img src="../djs/images/tohmo-photo1.jpg" alt="Tohmo" class="dj-photo">
+          <div class="dj-name">Tohmo</div>
+          <div class="dj-days">Mon + Thu</div>
+        </div>
+        <div class="dj-card cocoa">
+          <img src="../djs/images/krit-photo1.jpg" alt="Krit" class="dj-photo">
+          <div class="dj-name">Krit</div>
+          <div class="dj-days">Tuesday</div>
+        </div>
+        <div class="dj-card cocoa">
+          <img src="../djs/images/benji-photo1.jpg" alt="Benji" class="dj-photo">
+          <div class="dj-name">Benji</div>
+          <div class="dj-days">Wednesday</div>
+        </div>
+        <div class="dj-card cocoa">
+          <img src="../djs/images/linze-photo1.jpg" alt="Linze" class="dj-photo">
+          <div class="dj-name">Linze</div>
+          <div class="dj-days">Fri + CRU Wed</div>
+        </div>
+        <div class="dj-card cocoa">
+          <img src="../djs/images/pound-photo1.jpg" alt="Pound" class="dj-photo">
+          <div class="dj-name">Pound</div>
+          <div class="dj-days">Sat + CRU Thu</div>
+        </div>
+        <div class="dj-card cocoa">
+          <img src="../djs/images/jj-photo1.jpg" alt="JJ" class="dj-photo">
+          <div class="dj-name">JJ</div>
+          <div class="dj-days">Sunday</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">brightears.io</div>
+</div>
+
+</body>
+</html>

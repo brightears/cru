@@ -57,9 +57,20 @@ items.append({
     'amount': base_amount(),
 })
 
-# 2-4. Champagne promo extra early DJ shifts at CRU (May 21/22/23), 17:00-21:00
+# 2. Apr 22 Camilo 1hr extra at CRU (venue same-day request, not on April invoice — deferred to May per Norbert msg 3246)
+extra_hour_amount = (HOURLY_INVOICE_RATE * 1).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+items.append({
+    'no': 2,
+    'description': 'Extra 1hr DJ at CRU on Apr 22<sup>nd</sup>',
+    'date': '22.04.2026',
+    'time': '19:00 - 20:00',
+    'price': extra_hour_amount,
+    'amount': extra_hour_amount,
+})
+
+# 3-5. Bubble party extra early DJ shifts at CRU (May 21/22/23), 17:00-21:00
 extra_days = [21, 22, 23]
-line_no = 2
+line_no = 3
 for day in extra_days:
     items.append({
         'no': line_no,

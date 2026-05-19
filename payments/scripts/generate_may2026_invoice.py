@@ -22,7 +22,7 @@ YEAR = 2026
 MONTH = 5
 DAYS_IN_MONTH = 31
 TOTAL_SHIFTS = DAYS_IN_MONTH * 2  # 62 (Cocoa + CRU each night)
-INVOICE_NO = 3181  # 3180 was April
+INVOICE_NO = 3182  # 3181 was Uno Mas (manual by Norbert); 3180 was April
 INVOICE_DATE = '31.05.2026'
 
 PER_EVENING = (HOURLY_INVOICE_RATE * HOURS_PER_EVENING).quantize(

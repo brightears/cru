@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DJ Yui Truluv - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#d0c5af",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#191b23",
+                        "inverse-surface": "#343027",
+                        "background": "#fff8f0",
+                        "surface-dim": "#e1d9cc",
+                        "surface": "#fff8f0",
+                        "on-error-container": "#93000a",
+                        "primary": "#735c00",
+                        "outline": "#7f7663",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#4d4635",
+                        "on-primary-container": "#554300",
+                        "on-background": "#1f1b13",
+                        "surface-tint": "#735c00",
+                        "on-secondary-fixed-variant": "#44474f",
+                        "on-primary-fixed": "#241a00",
+                        "surface-container-low": "#fbf3e5",
+                        "secondary-fixed-dim": "#c4c6d0",
+                        "primary-container": "#d4af37",
+                        "tertiary-container": "#97b0ff",
+                        "surface-container-highest": "#eae1d4",
+                        "surface-bright": "#fff8f0",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "surface-container-high": "#efe7da",
+                        "primary-fixed": "#ffe088",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#eae1d4",
+                        "secondary": "#5c5e67",
+                        "inverse-primary": "#e9c349",
+                        "on-surface": "#1f1b13",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#dedfea",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f8f0e2",
+                        "on-tertiary-container": "#254188",
+                        "primary-fixed-dim": "#e9c349",
+                        "tertiary": "#415ba4",
+                        "on-secondary-container": "#60626b",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#e1e2ec",
+                        "on-tertiary-fixed": "#00174b",
+                        "surface-container": "#f5eddf",
+                        "on-tertiary-fixed-variant": "#27438a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "8rem",
+                        "margin-mobile": "1.5rem",
+                        "rule-weight": "1px",
+                        "gutter": "1.5rem",
+                        "margin-page": "4rem"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Bodoni Moda"],
+                        "display-xl-mobile": ["Bodoni Moda"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "headline-md": ["Bodoni Moda"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["80px", {"lineHeight": "88px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-xl-mobile": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-lg": ["42px", {"lineHeight": "48px", "fontWeight": "600"}],
+                        "body-md": ["14.6px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #faf7f0;
+            color: #050505;
+        }
+        /* A4 Print Layout Container */
+        .a4-container {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            position: relative;
+            background-color: #faf7f0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        @media print {
+            body { margin: 0; padding: 0; background-color: white; }
+            .a4-container { box-shadow: none; width: 100%; height: 100vh; page-break-after: always; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased flex items-center justify-center min-h-screen py-10">
+<div class="a4-container">
+<!-- Header -->
+<header class="w-full px-10 py-6 flex-none">
+<div class="flex justify-between items-center pb-4 border-b border-primary">
+<span class="font-label-caps text-label-caps text-primary uppercase">BrightEars × CRU Champagne Bar</span>
+<span class="font-label-caps text-label-caps text-primary uppercase">BUBBLE PARTY · MAY 21-23, 2026</span>
+</div>
+</header>
+<!-- Body Layout -->
+<main class="flex-grow flex w-full">
+<!-- Left Half: Image -->
+<div class="w-[60%] h-full relative pl-10 pb-10">
+<div class="w-full h-full relative overflow-hidden bg-surface-variant">
+<img alt="Editorial photography of a stylish female DJ in a sophisticated rooftop lounge." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6tXUhPx0Yyqst51wtPmVHBODS4uLUcYp7jF_CUNdOGpQVbhLc27dVBpSZ2aXAMZLtK8L0mnlhet_AtINtmkzcw4GBE-zhYff_XFklzBzsXHjpCUEiEN9zQIMqlUwKI2NLSxkfhPIuVl8FnGfokItKAXD6tiXXOiM45yie966P9FTpcZz1KT_ngTbgH3K0D-KH5MlIZcxkSbPYJdcGPIdn3Q570v10Wb-DL_XEowdo15HeaL3SLMXDqE0ramkpk029sP7P7SzT2xo"/>
+<!-- Subtle gradient for depth -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+</div>
+</div>
+<!-- Right Half: Content -->
+<div class="w-[40%] h-full flex flex-col px-10 pt-16 pb-10">
+<h1 class="font-display-xl-mobile text-display-xl-mobile text-on-background mb-4 uppercase leading-none">DJ YUI TRULUV</h1>
+<div class="font-label-caps text-label-caps text-primary mb-12 uppercase tracking-widest">
+                    BANGKOK <span class="mx-2 text-outline">|</span> DEEP HOUSE / NU-DISCO
+                </div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-16 max-w-sm">
+                    Yui Truluv is a cornerstone of Bangkok's high-end nightlife scene, known for her seamless blending of deep house rhythms with disco-infused soul. Her residency at CRU Champagne Bar has become synonymous with sophisticated sundowners and late-night champagne celebrations. With a meticulous ear for atmosphere, Yui curates soundscapes that perfectly complement the 360-degree skyline views of CentralWorld.
+                </p>
+<div class="border border-primary px-6 py-4 inline-block mb-16 self-start">
+<span class="font-label-caps text-label-caps text-primary uppercase">Thu 21 May, 17:00 — 21:00</span>
+</div>
+<div class="mt-auto flex items-center gap-3">
+<img alt="Gold Instagram Icon" class="w-6 h-6 object-contain" src="data:image/png;base64,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"/>
+<span class="font-body-md text-body-md text-on-background">@yuitruluv</span>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full px-10 py-6 flex-none text-center">
+<span class="font-label-caps text-[10px] uppercase text-outline tracking-wider">BrightEars · brightears.io · DJ programming for premium Bangkok venues</span>
+</footer>
+</div>
+</body></html>

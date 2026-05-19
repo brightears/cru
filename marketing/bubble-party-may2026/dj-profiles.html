@@ -9,271 +9,309 @@
   body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     color: #1a1a1a;
+    background: #faf7f0;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
   .page {
     width: 210mm;
-    min-height: 297mm;
-    padding: 18mm 20mm 14mm 20mm;
+    height: 297mm;
     page-break-after: always;
+    page-break-inside: avoid;
     display: flex;
     flex-direction: column;
+    background: #faf7f0;
+    overflow: hidden;
+    position: relative;
   }
   .page:last-child { page-break-after: auto; }
 
-  .header {
+  .top-bar {
+    flex: 0 0 18mm;
+    padding: 7mm 18mm 0 18mm;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding-bottom: 8mm;
-    border-bottom: 2px solid #d4af37;
-    margin-bottom: 10mm;
+    align-items: flex-start;
+    background: #faf7f0;
   }
-  .header .brand {
-    font-size: 12pt;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+  .top-bar .brand {
+    font-size: 11pt;
+    font-weight: 600;
+    letter-spacing: 0.3px;
     color: #1a1a1a;
   }
-  .header .event {
-    font-size: 9pt;
-    color: #888;
+  .top-bar .event {
+    font-size: 8.5pt;
+    color: #c8a23e;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding-top: 1mm;
+  }
+  .gold-rule {
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, #d4af37 20%, #d4af37 80%, transparent);
+    margin: 0 18mm 0 18mm;
   }
 
-  .profile {
-    display: flex;
-    gap: 12mm;
+  .body {
     flex: 1;
+    display: flex;
   }
   .photo-col {
-    flex: 0 0 70mm;
+    flex: 0 0 100mm;
+    position: relative;
+    background: #0a0a0a;
+    overflow: hidden;
   }
   .photo-col img {
-    width: 70mm;
-    height: 70mm;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 4mm;
-    box-shadow: 0 2mm 6mm rgba(0,0,0,0.08);
+    object-position: center top;
   }
-  .photo-col .slot-card {
-    margin-top: 6mm;
-    padding: 5mm;
-    background: #f7f4ec;
-    border-left: 3px solid #d4af37;
-    border-radius: 2mm;
-  }
-  .photo-col .slot-card .label {
-    font-size: 8pt;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 2mm;
-  }
-  .photo-col .slot-card .slot-line {
-    font-size: 10pt;
-    font-weight: 600;
-    line-height: 1.5;
-    color: #1a1a1a;
+  .photo-col .gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.55) 100%);
+    pointer-events: none;
   }
 
   .info-col {
     flex: 1;
+    padding: 12mm 18mm 14mm 14mm;
     display: flex;
     flex-direction: column;
   }
   .stage-name {
-    font-size: 28pt;
+    font-size: 32pt;
     font-weight: 700;
     line-height: 1;
-    margin-bottom: 2mm;
+    margin-bottom: 3mm;
+    letter-spacing: -0.5px;
     color: #1a1a1a;
   }
   .tagline {
-    font-size: 10pt;
-    color: #888;
+    font-size: 9pt;
+    color: #c8a23e;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 8mm;
+    letter-spacing: 2.5px;
+    font-weight: 600;
+    margin-bottom: 12mm;
   }
   .bio {
-    font-size: 11pt;
-    line-height: 1.55;
-    color: #333;
+    font-size: 10.5pt;
+    line-height: 1.65;
+    color: #2c2c2c;
+    margin-bottom: 10mm;
+  }
+  .set-card {
+    padding: 6mm 7mm;
+    background: #ffffff;
+    border-left: 3px solid #d4af37;
+    border-radius: 0 2mm 2mm 0;
+    box-shadow: 0 2mm 8mm rgba(212, 175, 55, 0.08);
     margin-bottom: 8mm;
+  }
+  .set-card .label {
+    font-size: 7.5pt;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    font-weight: 600;
+    margin-bottom: 2.5mm;
+  }
+  .set-card .slot-line {
+    font-size: 11.5pt;
+    font-weight: 600;
+    line-height: 1.55;
+    color: #1a1a1a;
   }
   .socials {
     margin-top: auto;
-    padding-top: 6mm;
-    border-top: 1px solid #e5e5e5;
-  }
-  .socials .label {
-    font-size: 8pt;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 3mm;
-  }
-  .socials .handle {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
     font-size: 11pt;
     color: #1a1a1a;
-    line-height: 1.6;
   }
-  .socials .handle a {
-    color: #1a1a1a;
-    text-decoration: none;
+  .ig-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 7mm;
+    height: 7mm;
+    border: 1.5px solid #1a1a1a;
+    border-radius: 2mm;
+    font-weight: 700;
+    font-size: 8.5pt;
   }
-  .socials .pending {
-    color: #999;
-    font-style: italic;
+  .handle {
+    font-weight: 600;
+    letter-spacing: 0.3px;
   }
 
-  .footer {
-    margin-top: 8mm;
-    text-align: center;
-    font-size: 8pt;
+  .footer-bar {
+    flex: 0 0 12mm;
+    padding: 0 18mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #faf7f0;
+    font-size: 7.5pt;
     color: #aaa;
-    letter-spacing: 0.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-top: 1px solid #ececec;
   }
 </style>
 </head>
 <body>
 
-<!-- DJ Yui Truluv -->
+<!-- 1. DJ Yui Truluv -->
 <div class="page">
-  <div class="header">
+  <div class="top-bar">
     <div class="brand">BrightEars × CRU Champagne Bar</div>
-    <div class="event">Bubble Party · May 21-23, 2026</div>
+    <div class="event">Bubble Party · 21–23 May 2026</div>
   </div>
-  <div class="profile">
+  <div class="gold-rule"></div>
+  <div class="body">
     <div class="photo-col">
-      <img src="file:///home/brightears/brightears/public/images/djs/yuitruluv-photo1.png" alt="Yui Truluv">
-      <div class="slot-card">
-        <div class="label">CRU Set</div>
-        <div class="slot-line">Thu 21 May<br>17:00 – 21:00</div>
-      </div>
+      <img src="file:///home/brightears/cru/djs/images/yuitruluv-photo1.jpg" alt="Yui Truluv">
+      <div class="gradient"></div>
     </div>
     <div class="info-col">
       <div class="stage-name">DJ Yui Truluv</div>
       <div class="tagline">Bangkok · Feel-Good House &amp; Latin</div>
       <div class="bio">Bangkok-based professional DJ with over 10 years experience. Known for creating smooth, feel-good vibes and building strong crowd connections. Also produces original tracks and remixes.</div>
+      <div class="set-card">
+        <div class="label">CRU Bubble Party Set</div>
+        <div class="slot-line">Thu 21 May · 17:00 – 21:00</div>
+      </div>
       <div class="socials">
-        <div class="label">Instagram</div>
-        <div class="handle"><a href="https://instagram.com/yuitruluv">@yuitruluv</a></div>
+        <span class="ig-icon">IG</span>
+        <span class="handle">@yuitruluv</span>
       </div>
     </div>
   </div>
-  <div class="footer">BrightEars · brightears.io · DJ programming for Bangkok venues</div>
+  <div class="footer-bar">BrightEars · brightears.io · DJ programming for premium Bangkok venues</div>
 </div>
 
-<!-- DJ Pound -->
+<!-- 2. DJ Pound -->
 <div class="page">
-  <div class="header">
+  <div class="top-bar">
     <div class="brand">BrightEars × CRU Champagne Bar</div>
-    <div class="event">Bubble Party · May 21-23, 2026</div>
+    <div class="event">Bubble Party · 21–23 May 2026</div>
   </div>
-  <div class="profile">
+  <div class="gold-rule"></div>
+  <div class="body">
     <div class="photo-col">
       <img src="file:///home/brightears/brightears/public/images/djs/pound-photo1.png" alt="DJ Pound">
-      <div class="slot-card">
-        <div class="label">CRU Set</div>
-        <div class="slot-line">Thu 21 May<br>21:00 – 01:00</div>
-      </div>
+      <div class="gradient"></div>
     </div>
     <div class="info-col">
       <div class="stage-name">DJ Pound</div>
-      <div class="tagline">Open Format · Pop · R&amp;B · Hip Hop</div>
-      <div class="bio">Open Format specialist with 20 years experience. Expert in pop charts, R&amp;B, and hip hop. Rooftop and nightlife veteran trusted across Bangkok's premium venues for peak-time energy and tight reads of the room.</div>
+      <div class="tagline">Bangkok · Pop · R&amp;B · Hip Hop</div>
+      <div class="bio">Open Format specialist with 20 years experience. Expert in pop charts, R&amp;B, and hip hop. Rooftop and nightlife veteran trusted across Bangkok's premium venues for peak-time energy and a sharp read of the room.</div>
+      <div class="set-card">
+        <div class="label">CRU Bubble Party Set</div>
+        <div class="slot-line">Thu 21 May · 21:00 – 01:00</div>
+      </div>
       <div class="socials">
-        <div class="label">Instagram</div>
-        <div class="handle"><a href="https://instagram.com/dj_pound">@dj_pound</a></div>
+        <span class="ig-icon">IG</span>
+        <span class="handle">@poundshop</span>
       </div>
     </div>
   </div>
-  <div class="footer">BrightEars · brightears.io · DJ programming for Bangkok venues</div>
+  <div class="footer-bar">BrightEars · brightears.io · DJ programming for premium Bangkok venues</div>
 </div>
 
-<!-- DJ Linze -->
+<!-- 3. DJ Linze -->
 <div class="page">
-  <div class="header">
+  <div class="top-bar">
     <div class="brand">BrightEars × CRU Champagne Bar</div>
-    <div class="event">Bubble Party · May 21-23, 2026</div>
+    <div class="event">Bubble Party · 21–23 May 2026</div>
   </div>
-  <div class="profile">
+  <div class="gold-rule"></div>
+  <div class="body">
     <div class="photo-col">
-      <img src="file:///home/brightears/brightears/public/images/djs/linze-photo1.png" alt="Linze">
-      <div class="slot-card">
-        <div class="label">CRU Set</div>
-        <div class="slot-line">Fri 22 May<br>17:00 – 21:00</div>
-      </div>
+      <img src="file:///home/brightears/cru/djs/images/linze-photo1.jpg" alt="Linze">
+      <div class="gradient"></div>
     </div>
     <div class="info-col">
       <div class="stage-name">DJ Linze</div>
-      <div class="tagline">Open Format · Pop · Dance · Thai &amp; K-pop</div>
-      <div class="bio">Open format DJ specializing in pop and dance music with a flair for Thai pop and K-pop. Known for taking requests and keeping the flow fresh.</div>
+      <div class="tagline">Bangkok · Open Format · Pop · Thai &amp; K-pop</div>
+      <div class="bio">Open format DJ specializing in pop and dance music with a flair for Thai pop and K-pop. Known for taking requests and keeping the flow fresh — a request-friendly set that meets the room where it is.</div>
+      <div class="set-card">
+        <div class="label">CRU Bubble Party Set</div>
+        <div class="slot-line">Fri 22 May · 17:00 – 21:00</div>
+      </div>
       <div class="socials">
-        <div class="label">Instagram</div>
-        <div class="handle"><a href="https://instagram.com/dj.linze">@dj.linze</a></div>
+        <span class="ig-icon">IG</span>
+        <span class="handle">@dj.linze</span>
       </div>
     </div>
   </div>
-  <div class="footer">BrightEars · brightears.io · DJ programming for Bangkok venues</div>
+  <div class="footer-bar">BrightEars · brightears.io · DJ programming for premium Bangkok venues</div>
 </div>
 
-<!-- DJ Camilo -->
+<!-- 4. DJ Camilo -->
 <div class="page">
-  <div class="header">
+  <div class="top-bar">
     <div class="brand">BrightEars × CRU Champagne Bar</div>
-    <div class="event">Bubble Party · May 21-23, 2026</div>
+    <div class="event">Bubble Party · 21–23 May 2026</div>
   </div>
-  <div class="profile">
+  <div class="gold-rule"></div>
+  <div class="body">
     <div class="photo-col">
-      <img src="file:///home/brightears/brightears/public/images/djs/camilo-photo1.png" alt="Camilo">
-      <div class="slot-card">
-        <div class="label">CRU Sets</div>
-        <div class="slot-line">Fri 22 May · 21:00 – 01:00<br>Sat 23 May · 17:00 – 21:00</div>
-      </div>
+      <img src="file:///home/brightears/cru/djs/images/camilo-photo1.png" alt="Camilo">
+      <div class="gradient"></div>
     </div>
     <div class="info-col">
       <div class="stage-name">DJ Camilo</div>
       <div class="tagline">Colombia · Latin · House · Live Percussion</div>
-      <div class="bio">Since very young, Camilo Diaz has worked with several Salsa bands in Colombia, recording, producing and performing. He joined forces with the most popular radio station in Colombia "Latina Stereo" and worked with the best musicians in Medellin. He moved to Thailand where he has been performing as a freelance percussionist and DJ in the most popular clubs and hotels.</div>
+      <div class="bio">Since very young, Camilo Diaz has worked with several Salsa bands in Colombia, recording, producing and performing. He joined forces with the most popular radio station in Colombia, Latina Stereo, and worked with the best musicians in Medellín. He moved to Thailand where he has been performing as a freelance percussionist and DJ in the most popular clubs and hotels.</div>
+      <div class="set-card">
+        <div class="label">CRU Bubble Party Sets</div>
+        <div class="slot-line">Fri 22 May · 21:00 – 01:00<br>Sat 23 May · 17:00 – 21:00</div>
+      </div>
       <div class="socials">
-        <div class="label">Instagram</div>
-        <div class="handle"><a href="https://instagram.com/camelthebarbarian">@camelthebarbarian</a></div>
+        <span class="ig-icon">IG</span>
+        <span class="handle">@camelthebarbarian</span>
       </div>
     </div>
   </div>
-  <div class="footer">BrightEars · brightears.io · DJ programming for Bangkok venues</div>
+  <div class="footer-bar">BrightEars · brightears.io · DJ programming for premium Bangkok venues</div>
 </div>
 
-<!-- DJ April -->
+<!-- 5. DJ April -->
 <div class="page">
-  <div class="header">
+  <div class="top-bar">
     <div class="brand">BrightEars × CRU Champagne Bar</div>
-    <div class="event">Bubble Party · May 21-23, 2026</div>
+    <div class="event">Bubble Party · 21–23 May 2026</div>
   </div>
-  <div class="profile">
+  <div class="gold-rule"></div>
+  <div class="body">
     <div class="photo-col">
-      <img src="file:///home/brightears/brightears/public/images/djs/april-photo1.jpg" alt="April">
-      <div class="slot-card">
-        <div class="label">CRU Set</div>
-        <div class="slot-line">Sat 23 May<br>21:00 – 01:00</div>
-      </div>
+      <img src="file:///home/brightears/cru/djs/images/april-photo1.jpg" alt="April">
+      <div class="gradient"></div>
     </div>
     <div class="info-col">
       <div class="stage-name">DJ April</div>
       <div class="tagline">Thailand · House · Pioneer Lady DJ Champion 2012</div>
       <div class="bio">Thailand's acclaimed female DJ, April first started mixing house music in late 2010 at many five-star hotels and clubs in Bangkok. In 2012, she was awarded Winner of the Pioneer Lady DJ Championship. Known for bringing an air of youth while maintaining the utmost professionalism, April has performed internationally across Asia and Europe.</div>
+      <div class="set-card">
+        <div class="label">CRU Bubble Party Set</div>
+        <div class="slot-line">Sat 23 May · 21:00 – 01:00</div>
+      </div>
       <div class="socials">
-        <div class="label">Instagram</div>
-        <div class="handle pending">handle to confirm</div>
+        <span class="ig-icon">IG</span>
+        <span class="handle">@djapril91</span>
       </div>
     </div>
   </div>
-  <div class="footer">BrightEars · brightears.io · DJ programming for Bangkok venues</div>
+  <div class="footer-bar">BrightEars · brightears.io · DJ programming for premium Bangkok venues</div>
 </div>
 
 </body>

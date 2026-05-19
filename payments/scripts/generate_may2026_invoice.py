@@ -63,7 +63,7 @@ line_no = 2
 for day in extra_days:
     items.append({
         'no': line_no,
-        'description': f'Champagne promo extra DJ at CRU on May {day}<sup>{ordinal(day)}</sup>',
+        'description': f'Champagne extra DJ at CRU on May {day}<sup>{ordinal(day)}</sup>',
         'date': f'{day:02d}.05.2026',
         'time': '17:00 - 21:00',
         'price': extra_dj_amount(),

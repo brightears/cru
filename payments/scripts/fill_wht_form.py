@@ -4,9 +4,68 @@ Fill Thai Withholding Tax Form (ภ.ง.ด.3) with DJ payment data.
 Usage: python fill_wht_form.py <dj_name> <amount> <tax> <output_path>
 """
 
+import os
+import subprocess
 import sys
 from pathlib import Path
 from pypdf import PdfReader, PdfWriter
+
+MONTH_MAP = {
+    'jan': '01', 'feb': '02', 'mar': '03', 'apr': '04', 'may': '05', 'jun': '06',
+    'jul': '07', 'aug': '08', 'sep': '09', 'oct': '10', 'nov': '11', 'dec': '12',
+}
+
+
+def precheck_tracker_open_items(venue_label, month_short, year_str):
+    """Refuse to generate WHT if BrightEars-Ops tracker .md files have unresolved
+    items for the same venue+month. Born from 2026-05-23 Linze Apr 29 miss — the
+    May 18 tracker flagged the discrepancy 5 days early and was ignored.
+
+    Override via env: WHT_ALLOW_OPEN_ITEMS=1 (use only after items are confirmed
+    resolved with Norbert).
+    """
+    m = MONTH_MAP.get((month_short or '').lower())
+    if not m or not year_str:
+        return
+    month_filter = f"{year_str}-{m}"
+
+    v = (venue_label or '').lower()
+    if 'cru' in v or 'cocoa' in v:
+        venue_filter = 'cru'  # matches cocoa-cru-*-tracker.md filename
+    elif 'nobu' in v:
+        venue_filter = 'nobu'
+    elif 'ldk' in v or 'kaan' in v:
+        venue_filter = 'ldk'
+    elif 'abar' in v:
+        venue_filter = 'abar'
+    elif 'horizon' in v:
+        venue_filter = 'horizon'
+    else:
+        venue_filter = None
+
+    scanner = Path('/home/brightears/BrightEars-Ops/scripts/scan-open-tracker-items.py')
+    if not scanner.exists():
+        return
+
+    cmd = ['python3', str(scanner), '--month', month_filter]
+    if venue_filter:
+        cmd.extend(['--venue', venue_filter])
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode == 0:
+        return
+
+    print('=' * 72)
+    print('TRACKER OPEN ITEMS DETECTED — refusing to generate WHT.')
+    print(f'Scanner filter: venue={venue_filter or "(none)"} month={month_filter}')
+    print('-' * 72)
+    print(result.stdout.rstrip())
+    print('=' * 72)
+    if os.environ.get('WHT_ALLOW_OPEN_ITEMS') == '1':
+        print('OVERRIDE: WHT_ALLOW_OPEN_ITEMS=1 set; continuing despite open items.')
+        return
+    print('Resolve each line above with Norbert BEFORE re-running.')
+    print('Override (only if items confirmed resolved): WHT_ALLOW_OPEN_ITEMS=1')
+    sys.exit(2)
 
 # Number to words conversion for Thai WHT forms (English)
 ONES = ['', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE',
@@ -116,6 +175,10 @@ def main():
             filename = f"{dj_name}-wht.pdf"
 
         output_path = f"{output_arg}/{filename}"
+
+        # Pre-check: bail if BrightEars-Ops tracker has unresolved items for this
+        # venue+month. See `feedback_scan_tracker_open_items_before_wht.md`.
+        precheck_tracker_open_items(venue, month, year)
 
     # Get template path
     script_dir = Path(__file__).parent

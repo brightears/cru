@@ -47,7 +47,7 @@ def precheck_tracker_open_items(venue_label, month_short, year_str):
     if not scanner.exists():
         return
 
-    cmd = ['python3', str(scanner), '--month', month_filter]
+    cmd = ['python3', str(scanner), '--month', month_filter, '--no-heartbeat']
     if venue_filter:
         cmd.extend(['--venue', venue_filter])
     result = subprocess.run(cmd, capture_output=True, text=True)
